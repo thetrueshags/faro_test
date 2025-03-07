@@ -145,6 +145,10 @@ app_license = "mit"
 # 	}
 # }
 
+doctype_js = {
+    "Customer": "public/js/customer.js"
+}
+
 # Scheduled Tasks
 # ---------------
 
