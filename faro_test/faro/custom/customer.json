@@ -34,7 +34,7 @@
    "in_standard_filter": 0,
    "insert_after": "identification_country",
    "is_system_generated": 0,
-   "is_virtual": 1,
+   "is_virtual": 0,
    "label": "Allowed For Layby",
    "length": 0,
    "link_filters": null,

@@ -1,0 +1,15 @@
+import frappe
+
+def execute():
+    # Get all Customer records with the minimal fields needed
+    customers = frappe.get_all("Customer", fields=["name", "identification_type", "id_number", "mobile_no", "allowed_for_layby"])
+    for cust in customers:
+        doc = frappe.get_doc("Customer", cust.name)
+        # Recalculate layby eligibility:
+        valid_identification = (doc.identification_type != "None" and doc.id_number)
+        has_mobile = bool(doc.mobile_no)
+        allowed = valid_identification and has_mobile
+        
+        # Update only if the value is different to avoid unnecessary writes
+        if doc.allowed_for_layby != allowed:
+            doc.db_set("allowed_for_layby", allowed)
